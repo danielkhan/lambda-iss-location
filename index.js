@@ -76,8 +76,9 @@ module.exports.handler = async (event, context, callback) => {
     const issPosition = await getIssLocation();
     const crewMembers = await getIssCrew();
 
-    const rGeoCode = await reverseGeocode(issPosition.latitude, issPosition.longitude);
     const imagery = await getIssImageryUrl(issPosition.latitude, issPosition.longitude);
+    const rGeoCode = await reverseGeocode(issPosition.latitude, issPosition.longitude);
+
     const map = getMapsUrl(issPosition.latitude, issPosition.longitude);
 
     return {
@@ -106,7 +107,7 @@ module.exports.handler = async (event, context, callback) => {
                 <div class="card">
                   <img class="card-img-top" src="${imagery}" alt="Detail of ${rGeoCode}">
                   <div class="card-body">
-                    <h5 class="card-title">Imagery of the area &amp; Crew</h5>
+                    <h5 class="card-title">Imagery of the area &amp; crew</h5>
                     <p class="card-text">${crewMembers.join(', ')}</p>
                   </div>
                 </div>

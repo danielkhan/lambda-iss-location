@@ -1,5 +1,8 @@
 service: lambda-iss-location
 
+# plugins:
+#  - '@dynatrace/serverless-oneagent'
+
 provider:
   name: aws
   runtime: nodejs8.10
@@ -20,4 +23,6 @@ functions:
          private: true
 
 custom:
-    environment: ${file(env.yml):default}
+  environment: ${file(env.yml):default}
+  # serverless-oneagent:
+  #  npmModuleVersion: next
