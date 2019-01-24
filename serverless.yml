@@ -20,7 +20,6 @@ functions:
       - http:
          path: iss/location
          method: get
-         private: true
 
 custom:
   environment: ${file(env.yml):default}
