@@ -12,5 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@dynatrace/serverless-oneagent": "^1.0.7"
+  }
 }

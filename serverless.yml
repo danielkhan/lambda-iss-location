@@ -1,6 +1,6 @@
 service: lambda-iss-location
 
-# plugins:
+plugins:
 #  - '@dynatrace/serverless-oneagent'
 
 provider:
@@ -23,5 +23,6 @@ functions:
 
 custom:
   environment: ${file(env.yml):default}
-  # serverless-oneagent:
-  #  npmModuleVersion: next
+#  serverless-oneagent:
+#    npmModuleVersion: next
+#    options: ${self:custom.environment.dynatraceCredentials}
