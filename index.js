@@ -65,7 +65,7 @@ async function reverseGeocode(lat, long) {
  * @param {*} long
  */
 function getMapsUrl(lat, long) {
-  return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=3&size=600x600&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
+  return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=1&size=600x600&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
 }
 
 /**
