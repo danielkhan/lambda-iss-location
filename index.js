@@ -38,7 +38,7 @@ async function getIssImageryUrl(lat, long) {
     const response = await axios.get(`https://api.nasa.gov/planetary/earth/imagery/?lon=${long}&lat=${lat}&date=2017-01-01&cloud_score=True&api_key=${nasaApiKey}`);
     return response.data.url;
   } catch (err) {
-    return 'https://placekitten.com/640/360';
+    return 'https://placekitten.com/512/512';
   }
 }
 
@@ -65,7 +65,7 @@ async function reverseGeocode(lat, long) {
  * @param {*} long
  */
 function getMapsUrl(lat, long) {
-  return `https://maps.googleapis.com/maps/api/staticmap?zoom=1&size=600x600&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
+  return `https://maps.googleapis.com/maps/api/staticmap?zoom=1&size=600x400&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
 }
 
 /**
@@ -88,9 +88,10 @@ module.exports.handler = async (event, context, callback) => {
           <title>HTML from API Gateway/Lambda</title>
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
             crossorigin="anonymous">
+          <meta charset="utf-8" />
         </head>
         <body>
-          <div class='container'>
+          <div class='container mt-4'>
             <div class='row'>
               <div class="col-sm">
                 <div class="card">
@@ -105,7 +106,7 @@ module.exports.handler = async (event, context, callback) => {
                 <div class="card">
                   <img class="card-img-top" src="${imagery}" alt="Detail of ${rGeoCode}">
                   <div class="card-body">
-                    <h5 class="card-title">Imagery of the area &amp; crew</h5>
+                    <h5 class="card-title">Imagery of the area | Current crew</h5>
                     <p class="card-text">${crewMembers.join(', ')}</p>
                   </div>
                 </div>
