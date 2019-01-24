@@ -74,10 +74,19 @@ function getMapsUrl(lat, long) {
 module.exports.handler = async (event, context, callback) => {
   try {
     const issPosition = await getIssLocation();
-    const crewMembers = await getIssCrew();
-
     const imagery = await getIssImageryUrl(issPosition.latitude, issPosition.longitude);
     const rGeoCode = await reverseGeocode(issPosition.latitude, issPosition.longitude);
+    const crewMembers = await getIssCrew();
+
+    /*
+    // Will be explained later
+    const [issPosition, crewMembers] = await Promise.all([getIssLocation(), getIssCrew()]);
+    const [imagery, rGeoCode] = await Promise.all([getIssImageryUrl(
+      issPosition.latitude,
+      issPosition.longitude),
+    reverseGeocode(issPosition.latitude, issPosition.longitude)
+    ]);
+    */
 
     const map = getMapsUrl(issPosition.latitude, issPosition.longitude);
 
