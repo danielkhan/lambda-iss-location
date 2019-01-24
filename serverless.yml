@@ -20,6 +20,9 @@ functions:
       - http:
          path: iss/location
          method: get
+         response:
+          headers:
+          Content-Type: "'text/html'"
 
 custom:
   environment: ${file(env.yml):default}

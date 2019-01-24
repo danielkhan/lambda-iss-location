@@ -65,7 +65,7 @@ async function reverseGeocode(lat, long) {
  * @param {*} long
  */
 function getMapsUrl(lat, long) {
-  return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=1&size=600x600&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
+  return `https://maps.googleapis.com/maps/api/staticmap?zoom=1&size=600x600&maptype=hybrid&&key=${googleApiKey}&markers=color:red%7Clabel:I%7C${lat},${long}`;
 }
 
 /**
@@ -81,10 +81,9 @@ module.exports.handler = async (event, context, callback) => {
 
     const map = getMapsUrl(issPosition.latitude, issPosition.longitude);
 
-    return {
-      statusCode: 200,
-      body: `
-      <html>
+    const html = `
+    <!DOCTYPE html>
+    <html lang='en'>
         <head>
           <title>HTML from API Gateway/Lambda</title>
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
@@ -94,7 +93,6 @@ module.exports.handler = async (event, context, callback) => {
           <div class='container'>
             <div class='row'>
               <div class="col-sm">
-
                 <div class="card">
                   <img class="card-img-top" src="${map}" alt="Map of ${rGeoCode}">
                   <div class="card-body">
@@ -116,7 +114,14 @@ module.exports.handler = async (event, context, callback) => {
           </div>
         </body>
         </html>`
-    };
+    return callback(null, {
+      statusCode: 200,
+      headers: {
+        'content-type': 'text/html',
+      },
+      body: html,
+    });
+
   } catch (err) {
     return callback(err);
   }
