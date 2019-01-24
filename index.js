@@ -94,7 +94,7 @@ module.exports.handler = async (event, context, callback) => {
     <!DOCTYPE html>
     <html lang='en'>
         <head>
-          <title>HTML from API Gateway/Lambda</title>
+          <title>Current ISS Location</title>
           <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
             crossorigin="anonymous">
           <meta charset="utf-8" />

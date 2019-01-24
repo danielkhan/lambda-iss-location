@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "debug": "^4.1.1",
+    "semver": "^5.6.0"
   },
   "devDependencies": {
     "@dynatrace/serverless-oneagent": "^1.0.7"
